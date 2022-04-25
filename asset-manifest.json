@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/cotterjd.github.io/kahoa_resources/static/css/main.788eb143.css",
+    "main.js": "/cotterjd.github.io/kahoa_resources/static/js/main.18354096.js",
+    "static/js/377.45946ce3.chunk.js": "/cotterjd.github.io/kahoa_resources/static/js/377.45946ce3.chunk.js",
+    "index.html": "/cotterjd.github.io/kahoa_resources/index.html",
+    "main.788eb143.css.map": "/cotterjd.github.io/kahoa_resources/static/css/main.788eb143.css.map",
+    "main.18354096.js.map": "/cotterjd.github.io/kahoa_resources/static/js/main.18354096.js.map",
+    "377.45946ce3.chunk.js.map": "/cotterjd.github.io/kahoa_resources/static/js/377.45946ce3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.788eb143.css",
+    "static/js/main.18354096.js"
+  ]
+}
