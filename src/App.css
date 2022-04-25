@@ -1,0 +1,26 @@
+.available {
+  background-color: rgb(27, 94, 32, 0.4);
+}
+.almost {
+  background-color: rgb(255, 255, 0, 0.4);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.info {
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  width: 17px;
+  padding-left:4px;
+}
+
+.inline-skills {
+  text-overflow: ellipsis;
+  width: 65vw;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
