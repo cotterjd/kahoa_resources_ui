@@ -31,6 +31,7 @@ import {
 } from "@chakra-ui/react"
 import { DevTable } from './components'
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
+import { getData, getSkills, getFormattedData } from './utils/getResources'
 import './App.css'
 
 const blankFilter = { skill: ``, qualifier: `At or Above`, level: 0 }
@@ -57,64 +58,13 @@ export const App: React.FC<any> = (): JSX.Element => {
   }, [data, filters])
 
   React.useEffect(() => {
-    fetch(`https://kahoa-resource-server-prototype.onrender.com/resources`)
-      .then(r => r.json())
-      .then(res => {
-        const otherKey = "Other Languages I Have Skill In (include your skill rating)"
-        const el = res[0]
-        const skillsFromFile = Object.keys(el).reduce((acc, key) => {
-          if (![`TimeStamp`, `Username`, otherKey].includes(key)) return [...acc, key]
-          return acc
-        }, [])
-        setSkills(skillsFromFile)
-        const formattedData = res.map(x => ({
-          name: x.Username,
-          available: false,
-          dateAvailable: ``,
-          project: ``,
-          skills: {
-            "Spring": x.Spring,
-            "Hibernate": x.Hibernate,
-            "Maven": x.Maven,
-            "Flyway": x.Flyway,
-            "GraphQL": x.GraphQL,
-            "MySQL": x.MySQL,
-            "PL/SQL": x["PL/SQL"],
-            "Postgres": x.Postgres,
-            "jMeter": x.jMeter,
-            "Python": x.Python,
-            "JavaScript": x.JavaScript,
-            "C#": x["C#"],
-            "PHP": x.PHP,
-            "Angular": x.Angular,
-            "React": x.React,
-            "Vue": x.Vue.js,
-            "MongoDB": x.MongoDB,
-            "AWS": x.AWS,
-            "Azure": x.Azure,
-            "Bash": x.Bash,
-            "Linux": x.Linux,
-            "CSS": x.CSS,
-            "TypeScript": x.TypeScript,
-            "JQuery": x.JQuery,
-            "Flutter": x.Flutter,
-            "Swift": x.Swift,
-            "Objective C": x["Objective C"],
-            "Android Native": x["Android Native"],
-            "Kotlin": x.Kotlin,
-            "Go": x.Go,
-            "Erlang": x.Erlang,
-            "ReactNative": x.ReactNative,
-            "DynamoDB": x.DynamoDB,
-            "Node": x.Node.js,
-            "Java": x.Java,
-            "SQL Server": x["SQL Server"],
-          },
-          otherSkills: x[otherKey],
-        }))
-
-      setData(formattedData)
-      })
+      getData()
+        .then(res => {
+            setSkills(getSkills(res[0]))
+            return res
+        })
+        .then(getFormattedData)
+        .then(setData)
   }, [])
 
   const onChangeSkill = (evt, index) => {
