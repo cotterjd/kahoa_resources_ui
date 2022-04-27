@@ -1,4 +1,5 @@
 import * as React from "react"
+import { extendTheme, ThemeConfig } from "@chakra-ui/react"
 import {
   ChakraProvider,
   Box,
@@ -12,8 +13,7 @@ import {
   Tbody,
   Grid,
   Select,
-  Flex,
-  theme,
+  // theme,
   Button,
   Modal,
   ModalOverlay,
@@ -89,13 +89,21 @@ export const App: React.FC<any> = (): JSX.Element => {
   const onRemoveFilter = (index: number) => {
     return setFilters([...filters.slice(0, index), ...filters.slice(index+1)])
   }
+  
   const onClickRow = (item) => {
     setDev(item)
     setIsDevModalOpen(true)
   }
+
+  const config : ThemeConfig = {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  }
+
+  const theme = extendTheme({ config })
+
   return <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="x
-    l">
+    <Box textAlign="center" fontSize="md">
       <Grid minH="100vh" p={3}>
         <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
