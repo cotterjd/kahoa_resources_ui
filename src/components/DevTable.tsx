@@ -34,7 +34,7 @@ interface Props {
 }
 export function DevTable (props: Props) {
   return (
-    <Table colorScheme='teal'>
+    <Table >
       <Thead>
         <Tr>
           <Th>Name</Th>

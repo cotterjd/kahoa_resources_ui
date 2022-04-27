@@ -1,5 +1,6 @@
 import * as React from "react"
 import { extendTheme, ThemeConfig } from "@chakra-ui/react"
+import { mode } from '@chakra-ui/theme-tools';
 import {
   ChakraProvider,
   Box,
@@ -13,7 +14,6 @@ import {
   Tbody,
   Grid,
   Select,
-  // theme,
   Button,
   Modal,
   ModalOverlay,
@@ -100,7 +100,18 @@ export const App: React.FC<any> = (): JSX.Element => {
     useSystemColorMode: false,
   }
 
-  const theme = extendTheme({ config })
+  const styles = {
+    global: props => ({
+      body: {
+        bg: mode('white', '#141214')(props),
+    },
+      colors: {
+        primary: '#FF5510',
+      },
+    }),
+  };
+
+  const theme = extendTheme({ config, styles })
 
   return <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="md">
@@ -132,10 +143,10 @@ export const App: React.FC<any> = (): JSX.Element => {
               </Select>
               &nbsp;
               <Button
+                color='#FF5510' 
                 className="clickable"
                 variant="outline"                
                 borderRadius='100px'
-                style={{ color: "red" }}
                 onClick={_ => onRemoveFilter(i)}
               >
                 &#x2715;
@@ -144,10 +155,10 @@ export const App: React.FC<any> = (): JSX.Element => {
           ))
         }
         <HStack>
-          <Button colorScheme="teal" variant="outline"
+          <Button color='white' bg='#FF5510' border="2px solid #FF5510" _hover={{background: "white", color: "#FF5510", border: "2px solid #FF5510"}} variant="solid"
             onClick={_ => setFilters([...filters, blankFilter])}
           >+ Add Filter</Button>
-          <Button colorScheme="teal" variant="outline"
+          <Button color='white' bg='#FF5510' border="2px solid #FF5510" _hover={{background: "white", color: "#FF5510", border: "2px solid #FF5510"}} variant="solid"
             onClick={_ => {
               setFilters([blankFilter])
             }}
@@ -167,7 +178,7 @@ export const App: React.FC<any> = (): JSX.Element => {
         <ModalHeader>{dev.name}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Table colorScheme='teal'>
+          <Table>
             <Thead>
               <Tr>
                 <Th>Skill</Th>
@@ -216,7 +227,7 @@ export const App: React.FC<any> = (): JSX.Element => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme='blue' mr={3} onClick={_ => setIsDevModalOpen(false)}>
+          <Button color='white' bg='#FF5510' mr={3} onClick={_ => setIsDevModalOpen(false)}>
             Close
           </Button>
         </ModalFooter>
