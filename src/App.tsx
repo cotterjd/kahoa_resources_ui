@@ -125,7 +125,7 @@ export const App: React.FC<any> = (): JSX.Element => {
               &nbsp;
               <Button
                 className="clickable"
-                // colorScheme="red"
+                variant="outline"                
                 borderRadius='100px'
                 style={{ color: "red" }}
                 onClick={_ => onRemoveFilter(i)}
