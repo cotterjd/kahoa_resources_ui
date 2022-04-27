@@ -1,6 +1,6 @@
 # Getting Started
 `$ git clone git@github.com:cotterjd/kahoa_resources.git`<br>
-`$ cd kahoa_resources && npm install && npm start`<br>
+`$ cd kahoa_resources && yarn install && yarn start`<br>
 
 # Running Tests
 `$ npm test`<br>
