@@ -2,11 +2,6 @@
 `$ git clone git@github.com:cotterjd/kahoa_resources.git`<br>
 `$ cd kahoa_resources && yarn install && yarn start`<br>
 
-# Running Tests
-`$ npm test`<br>
-or <br>
-`$ npm run test:watch`<br>
-
 Hosted at: http://cotterslist.com/kahoa_resources/
 
 This project was bootstrapped with
