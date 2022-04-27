@@ -227,9 +227,9 @@ export const App: React.FC<any> = (): JSX.Element => {
         </ModalBody>
 
         <ModalFooter>
-          <Button color='white' bg='#FF5510' mr={3} onClick={_ => setIsDevModalOpen(false)}>
-            Close
-          </Button>
+            <Button color='white' bg='#FF5510' border="2px solid #FF5510" _hover={{background: "white", color: "#FF5510", border: "2px solid #FF5510"}} variant="solid" onClick={_ => setIsDevModalOpen(false)}>
+              Close
+            </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
