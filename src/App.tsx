@@ -6,6 +6,7 @@ import {
   Box,
   VStack,
   HStack,
+  Input,
   Table,
   Thead,
   Th,
@@ -41,11 +42,13 @@ export const App: React.FC<any> = (): JSX.Element => {
   const [devs, setDevs] = React.useState([])
   const [skills, setSkills] = React.useState([`Node`, `CSharp`, `Java`])
   const [dev, setDev] = React.useState({ name: ``, skills: {}, otherSkills: `` })
+  const [searchText, setSearchText] = React.useState(``)
   const [isDevModalOpen, setIsDevModalOpen] = React.useState(false)
   const [filters, setFilters] = React.useState([blankFilter])
 
   React.useEffect(() => {
-    setDevs(data.filter(x => {
+    const filteredDevs = data
+      .filter(x => {
         if (filters.length === 0) return true
         return filters.reduce((bool, filter) => {
           if (!bool) return bool
@@ -55,8 +58,10 @@ export const App: React.FC<any> = (): JSX.Element => {
             ? Number(x.skills[filter.skill]) >= filter.level
             : Number(x.skills[filter.skill]) <= filter.level
         }, true)
-      }))
-  }, [data, filters])
+      })
+      .filter(d => d.name.toLowerCase().includes(searchText?.toLowerCase()))
+    setDevs(filteredDevs)
+  }, [data, filters, searchText])
 
   React.useEffect(() => {
       getData()
@@ -93,6 +98,10 @@ export const App: React.FC<any> = (): JSX.Element => {
   const onClickRow = (item) => {
     setDev(item)
     setIsDevModalOpen(true)
+  }
+
+  const onSearch = (evt) => {
+    setSearchText(evt.target.value)
   }
 
   const config : ThemeConfig = {
@@ -165,10 +174,11 @@ export const App: React.FC<any> = (): JSX.Element => {
           >Clear Filters</Button>
         </HStack>
         <span>{devs.length} Results</span>
-            <DevTable
-              devs={devs}
-              onClick={row => onClickRow(row)}
-            />
+        <Input type="text" placeholder="Search developer name" onChange={onSearch} />
+        <DevTable
+          devs={devs}
+          onClick={row => onClickRow(row)}
+        />
         </VStack>
       </Grid>
     </Box>
