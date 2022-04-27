@@ -30,7 +30,7 @@ import {
   PopoverArrow,
   PopoverCloseButton,
 } from "@chakra-ui/react"
-import { DevTable } from './components'
+import { DevTable, Login } from './components'
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import { getData, getSkills, getFormattedData } from './utils/getResources'
 import './App.css'
@@ -105,6 +105,7 @@ export const App: React.FC<any> = (): JSX.Element => {
   return <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="md">
       <Grid minH="100vh" p={3}>
+        <Login />
         <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
         {
