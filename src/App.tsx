@@ -3,6 +3,7 @@ import {
   ChakraProvider,
   Box,
   VStack,
+  HStack,
   Table,
   Thead,
   Th,
@@ -100,7 +101,7 @@ export const App: React.FC<any> = (): JSX.Element => {
         <VStack spacing={8}>
         {
           filters.map((x, i) => (
-            <Flex align="center">
+            <HStack align="center">
               <Select placeholder="Select a Skill" onChange={evt => onChangeSkill(evt, i)}>
                 {
                   skills.map(x => <option>{x}</option>)
@@ -110,7 +111,7 @@ export const App: React.FC<any> = (): JSX.Element => {
                 <option>At or Above</option>
                 <option>At or Below</option>
               </Select>
-              <Select placeholder="Select a Level" onChange={evt => onChangeLevel(evt, i)}>
+              <Select placeholder="Select a Level"  onChange={evt => onChangeLevel(evt, i)}>
                 <option>10</option>
                 <option>9</option>
                 <option>8</option>
@@ -122,17 +123,19 @@ export const App: React.FC<any> = (): JSX.Element => {
                 <option>2</option>
               </Select>
               &nbsp;
-              <span
+              <Button
                 className="clickable"
+                // colorScheme="red"
+                borderRadius='100px'
                 style={{ color: "red" }}
                 onClick={_ => onRemoveFilter(i)}
               >
                 &#x2715;
-              </span>
-            </Flex>
+              </Button>
+            </HStack>
           ))
         }
-        <Flex>
+        <HStack>
           <Button colorScheme="teal" variant="outline"
             onClick={_ => setFilters([...filters, blankFilter])}
           >+ Add Filter</Button>
@@ -141,7 +144,7 @@ export const App: React.FC<any> = (): JSX.Element => {
               setFilters([blankFilter])
             }}
           >Clear Filters</Button>
-        </Flex>
+        </HStack>
         <span>{devs.length} Results</span>
             <DevTable
               devs={devs}
