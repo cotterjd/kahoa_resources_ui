@@ -2,7 +2,7 @@
 `$ git clone git@github.com:cotterjd/kahoa_resources.git`<br>
 `$ cd kahoa_resources && yarn install && yarn start`<br>
 
-Hosted at: http://cotterslist.com/kahoa_resources/
+Hosted at: http://cotterslist.com/kahoa_resources_ui/
 
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
