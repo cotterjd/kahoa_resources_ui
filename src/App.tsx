@@ -7,31 +7,11 @@ import {
   VStack,
   HStack,
   Input,
-  Table,
-  Thead,
-  Th,
-  Tr,
-  Td,
-  Tbody,
   Grid,
   Select,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverArrow,
-  PopoverCloseButton,
 } from "@chakra-ui/react"
-import { DevTable } from './components'
+import { DevTable, ViewDev } from './components'
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
 import { getData, getSkills, getFormattedData } from './utils/getResources'
 import './App.css'
@@ -182,66 +162,10 @@ export const App: React.FC<any> = (): JSX.Element => {
         </VStack>
       </Grid>
     </Box>
-    <Modal isOpen={isDevModalOpen} onClose={() => setIsDevModalOpen(false)}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>{dev.name}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Skill</Th>
-                <Th>
-                  Rating &nbsp; 
-                  <Popover>
-  <PopoverTrigger>
-    <span className="info clickable">?</span>
-  </PopoverTrigger>
-  <PopoverContent>
-    <PopoverArrow />
-    <PopoverCloseButton />
-    <PopoverHeader>Ratings are based on the following scale</PopoverHeader>
-    <PopoverBody>
-      <ol style={{ paddingLeft: `10px` }}>
-        <li>No Experience</li>
-        <li>Reviewed code in this language once or twice</li>
-        <li>Played around in the code before but not professionally</li>
-        <li>I've committed code in this language before</li>
-        <li>I've helped deliver a project in this language</li>
-        <li>I can contribute to any project in this language</li>
-        <li>I can develop a project by myself in this language</li>
-        <li>I can lead a team in this language</li>
-        <li>I can solve complex problems and deliver enterprise quality software in this language </li>
-        <li>God(dess)-Like</li> 
-      </ol>                                                                               
-    </PopoverBody>                                                                        
-  </PopoverContent>                                                                       
-</Popover>                                                                                
-                </Th>                                                                     
-              </Tr>                                                                       
-            </Thead>                                                                      
-            <Tbody>
-              {
-                Object.keys(dev.skills).map((k, i) => (
-                  <Tr key={i}>
-                    <Td>{k}</Td>
-                    <Td>{dev.skills[k]}</Td>
-                  </Tr>
-                ))
-              }
-              <h3>Other Skills</h3>
-              <p>{dev.otherSkills}</p>
-            </Tbody>
-          </Table>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button color='white' bg='#FF5510' mr={3} onClick={_ => setIsDevModalOpen(false)}>
-            Close
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    <ViewDev
+      isOpen={isDevModalOpen}
+      onClose={_ => setIsDevModalOpen(false)}
+      dev={dev}
+    />
   </ChakraProvider>
 }
