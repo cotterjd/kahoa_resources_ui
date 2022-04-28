@@ -2,7 +2,7 @@
   "name": "resource_finder",
   "version": "0.0.0",
   "private": true,
-  "homepage": "cotterjd.github.io/kahoa_resources",
+  "homepage": "cotterjd.github.io/kahoa_resources_ui",
   "dependencies": {
     "@chakra-ui/react": "^1.8.7",
     "@emotion/react": "^11.0.0",
