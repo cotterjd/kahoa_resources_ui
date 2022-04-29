@@ -1,5 +1,5 @@
 import * as React from "react"
-import { extendTheme, ThemeConfig } from "@chakra-ui/react"
+import { border, extendTheme, ThemeConfig } from "@chakra-ui/react"
 import { mode } from '@chakra-ui/theme-tools';
 import {
   ChakraProvider,
@@ -10,6 +10,7 @@ import {
   Grid,
   Select,
   Button,
+  Divider,
 } from "@chakra-ui/react"
 import { DevTable, Login, ViewDev } from './components'
 import { ColorModeSwitcher } from "./ColorModeSwitcher"
@@ -110,7 +111,7 @@ export const App: React.FC<any> = (): JSX.Element => {
         <VStack spacing={8}>
         {
           filters.map((x, i) => (
-            <HStack align="center">
+            <HStack align="center" spacing='3'>
               <Select placeholder="Select a Skill" onChange={evt => onChangeSkill(evt, i)}>
                 {
                   skills.map(x => <option>{x}</option>)
@@ -144,7 +145,10 @@ export const App: React.FC<any> = (): JSX.Element => {
             </HStack>
           ))
         }
-        <HStack>
+        <HStack spacing='3'>
+          <Input width='240px' bg='gray.100' variant='filled' _placeholder={{ opacity: 1, color: 'gray.500' }}  _hover={{ bg: "white", border:"2px solid #FF5510" }}
+          _focus={{ boxShadow: "outline", border:"2px solid #FF5510" }} type="text" placeholder="Search developer name" onChange={onSearch} />
+          <Divider orientation="vertical" borderColor='gray.500'/>
           <Button color='white' bg='#FF5510' border="2px solid #FF5510" _hover={{background: "white", color: "#FF5510", border: "2px solid #FF5510"}} variant="solid"
             onClick={_ => setFilters([...filters, blankFilter])}
           >+ Add Filter</Button>
@@ -153,9 +157,8 @@ export const App: React.FC<any> = (): JSX.Element => {
               setFilters([blankFilter])
             }}
           >Clear Filters</Button>
-        </HStack>
+        </HStack>        
         <span>{devs.length} Results</span>
-        <Input type="text" placeholder="Search developer name" onChange={onSearch} />
         <DevTable
           devs={devs}
           onClick={row => onClickRow(row)}
