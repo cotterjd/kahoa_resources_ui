@@ -5,6 +5,7 @@ import {
   Tr,
   Td,
   Tbody,
+  Box
 } from "@chakra-ui/react"
 
 const devSkillsMap = {}
@@ -41,23 +42,25 @@ interface Props {
 }
 export function DevTable (props: Props) {
   return (
-    <Table >
-      <Thead>
-        <Tr>
-          <Th>Name</Th>
-          <Th>Skills</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {
-          props.devs.map(x => (
-            <Tr className="clickable" onClick={_ => props.onClick(x)}>
-              <Td>{x.name}</Td>
-              <Td title={getDevSkills(x)}><span className="inline-skills">{getDevSkills(x)}</span></Td>
-            </Tr>
-          ))
-        }
-      </Tbody>
-    </Table>
+    <Box overflowY="auto" maxHeight="70vh" boxShadow='base'>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Skills</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
+          {
+            props.devs.map(x => (
+              <Tr className="clickable" onClick={_ => props.onClick(x)}>
+                <Td>{x.name}</Td>
+                <Td title={getDevSkills(x)}><span className="inline-skills">{getDevSkills(x)}</span></Td>
+              </Tr>
+            ))
+          }
+        </Tbody>
+      </Table>
+    </Box>
   )
 }

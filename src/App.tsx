@@ -93,7 +93,7 @@ export const App: React.FC<any> = (): JSX.Element => {
   const styles = {
     global: props => ({
       body: {
-        bg: mode('white', '#141214')(props),
+        bg: mode('white', '#141414')(props),
     },
       colors: {
         primary: '#FF5510',
@@ -105,7 +105,7 @@ export const App: React.FC<any> = (): JSX.Element => {
 
   return <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="md">
-      <Grid minH="100vh" p={3}>
+      <Grid p={3}>
         <HStack justify='flex-end'>
           <Login />
           <ColorModeSwitcher justifySelf="flex-end" />
