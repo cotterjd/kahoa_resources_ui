@@ -5,7 +5,8 @@ import {
   Tr,
   Td,
   Tbody,
-  Box
+  Box,
+  Badge,
 } from "@chakra-ui/react"
 
 const devSkillsMap = {}
@@ -55,7 +56,7 @@ export function DevTable (props: Props) {
             props.devs.map(x => (
               <Tr className="clickable" onClick={_ => props.onClick(x)}>
                 <Td>{x.name}</Td>
-                <Td title={getDevSkills(x)}><span className="inline-skills">{getDevSkills(x)}</span></Td>
+                <Td title={getDevSkills(x)}><Badge className="inline-skills">{getDevSkills(x)}</Badge></Td>
               </Tr>
             ))
           }
