@@ -106,8 +106,10 @@ export const App: React.FC<any> = (): JSX.Element => {
   return <ChakraProvider theme={theme}>
     <Box textAlign="center" fontSize="md">
       <Grid minH="100vh" p={3}>
-        <Login />
-        <ColorModeSwitcher justifySelf="flex-end" />
+        <HStack justify='flex-end'>
+          <Login />
+          <ColorModeSwitcher justifySelf="flex-end" />
+        </HStack>
         <VStack spacing={8}>
         {
           filters.map((x, i) => (
