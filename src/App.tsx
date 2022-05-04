@@ -95,8 +95,12 @@ export const App: React.FC<any> = (): JSX.Element => {
       body: {
         bg: mode('white', '#141414')(props),
     },
-      colors: {
-        primary: '#FF5510',
+      components: {
+        Modal: {
+          baseStyle: {
+            bg: mode('white', '#141414')(props),
+          },
+        }
       },
     }),
   };
@@ -134,6 +138,11 @@ export const App: React.FC<any> = (): JSX.Element => {
                 <option>3</option>
                 <option>2</option>
               </Select>
+              <Select onChange={evt => onChangeQualifier(evt, i)}>
+                <option>View Active</option>
+                <option>View Archive</option>
+                <option>View All</option>
+              </Select>
               &nbsp;
               <Button
                 color='#FF5510' 
@@ -148,7 +157,7 @@ export const App: React.FC<any> = (): JSX.Element => {
           ))
         }
         <HStack spacing='3'>
-          <Input width='240px' bg='gray.100' variant='filled' _placeholder={{ opacity: 1, color: 'gray.500' }}  _hover={{ bg: "white", border:"2px solid #FF5510" }}
+          <Input width='380px' bg='gray.100' variant='filled' _placeholder={{ opacity: 1, color: 'gray.500' }}  _hover={{ bg: "white", border:"2px solid #FF5510" }}
           _focus={{ boxShadow: "outline", border:"2px solid #FF5510" }} type="text" placeholder="Search developer name" onChange={onSearch} />
           <Divider orientation="vertical" borderColor='gray.500'/>
           <Button color='white' bg='#FF5510' border="2px solid #FF5510" _hover={{background: "white", color: "#FF5510", border: "2px solid #FF5510"}} variant="solid"
